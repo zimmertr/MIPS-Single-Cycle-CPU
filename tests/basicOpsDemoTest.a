@@ -1,0 +1,38 @@
+############################################################################
+# 
+# A simple (and incomplete) demonstration of one you might test basic
+# I-type and R-type instructions.
+#
+# When constructing a complete test suite, be sure to
+# 
+# (1) Test all operations
+# (2) Test operations with several different inputs. 
+# (3) Choose inputs carefully.  For example, suppose you switched
+#     control wires so that addi instructions actually executed as ori
+#     instructions.  The line addi "$3, $3, 0", will work correctly in
+#     spite of the mistake.
+#
+###########################################################################
+
+addi $16, $0, 151    # $16 = 3
+
+add  $18, $16, $0   # $18 = 16
+
+addi $16, $0, 1
+
+ori $16, $16, 0
+
+andi $16, $16, 0
+
+xor $16, $0, $16
+
+j STORP
+
+STORP:
+addi $15, $15, 23
+jal PLAP
+addi $15, $15, 25
+
+PLAP:
+or $15, $16, $18
+jr $ra

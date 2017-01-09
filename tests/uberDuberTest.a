@@ -1,0 +1,66 @@
+	.data
+val1:	2012
+val2:	2014
+val3:	42
+val4:	50
+
+	.text
+	addi	$16, $0, -15
+	addi	$17, $0, 25
+	add	$18, $17, $17
+	add	$19, $16, $17
+	and	$20, $17, $19
+	andi	$21, $20, 1
+	beq	$18, $18, JST
+BNEST:
+	bne	$20, $0, JALST
+JST:
+	j	BNEST
+JALST:
+	jal	GOTOJRST
+JRST:
+	addi    $18, $17, 0
+	lw	$30, val3
+	la 	$22, NOWHERE
+	jr	$22
+FINISHIT:
+	addi	$30, $30, 1
+	lw	$22, val1
+	lw	$27, val2
+	lw	$28, val3
+	lui	$23, 23
+	nor	$24, $21, $22
+	la	$25, val3
+	sw	$24, 12($25)
+	or	$25, $21, $22
+	ori	$26, $18, 1
+	slt	$15, $26, $22
+	sltu	$14, $26, $22
+	slti	$13, $26, 101
+GOTOJRST:
+	lw	$29, val3
+	bne	$18, $17, JRST
+	sltiu	$12, $26, 2
+	la	$25, val4
+	sw	$21, 4($25)
+	sub	$24, $21, $25
+	sw	$24, 16($25)
+	addi $27, $0, 20
+	xor	$19, $27, $16
+	sw	$19, 20($25)
+
+NOWHERE:
+	addi	$16, $0, 52
+	bne	$30, $16, FINISHIT
+	xori	$17, $16, 1
+LOOP:
+	la	$18, val4
+	lw	$19, 64($18)
+	addi	$19, $19, 1      #Loop Count
+	sw	$19, 64($18)	
+	lw   $24, val4		#Load val4 (50)
+	beq  $19, $zero, LOOP #Should not branch
+	bne  $19, $19, LOOP   #Should not branch
+	bne	 $19, $24, BNEST	#End loop after 50 runs
+END:
+					#GOODBYE

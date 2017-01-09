@@ -1,0 +1,28 @@
+.text
+	addi	$16, $0, -15
+	addi	$17, $0, 25
+	add	$18, $17, $17
+	add	$19, $16, $17
+	and	$20, $17, $19
+	andi	$21, $20, 1
+	j BLASPH
+FORT:
+	xori $18, $19, 1
+	ori $19, $21, 20
+	addi $16, $0, 1
+	addi $17, $0, 1
+	j ENDNOT
+
+BLASPH:
+	or $16, $17, $18
+	xor $17, $18, $19
+	j FORT
+
+ENDNOT:
+	addi $17, $0, 0
+	beq $16, $17, BEQS
+
+BEQS:
+	
+
+

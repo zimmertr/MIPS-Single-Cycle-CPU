@@ -1,0 +1,7 @@
+.text
+addi $1, $1, 25
+or $2, $1, 1
+j BRANCH
+
+BRANCH:
+add $2, $0, $1

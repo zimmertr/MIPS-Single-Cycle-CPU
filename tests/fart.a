@@ -1,0 +1,18 @@
+li $15, 20
+li $16, 30
+slti $17, $15, 30
+j BUTT
+BUTT:
+addi $17, $17, 20
+jal BUTTNUTT
+ori $17, $17, 1
+j HEAAH
+BUTTNUTT:
+addi $17, $17, 20
+jr $ra
+HEAAH:
+addi $17, $0, 40
+addi $15, $0, 40
+bne $15, $17, FRANKLY
+FRANKLY:
+subi $17, $27, 20
