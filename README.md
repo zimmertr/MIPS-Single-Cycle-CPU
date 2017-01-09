@@ -1,6 +1,6 @@
 # README #
 
-MIPS Single Cycle CPU implemented in JLS Logic Designer.  
+MIPS Single Cycle CPU implemented in JLS Logic Designer that my group made for a Computer Organization class at GVSU.
 
 ##Entire CPU:
 
